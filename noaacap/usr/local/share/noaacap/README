@@ -1,3 +1,7 @@
+I have updated this to have a total of 6 counties for the weather alert.
+
+Below is the readme from the creator. 
+
 This software is written in python3 and has been tested with aprx 2.9.x.
 If you are running a version < 2.9.0 you should first update aprx.  The current
 release of aprx may be found at http://thelifeofkenneth.com/aprx/debs/.

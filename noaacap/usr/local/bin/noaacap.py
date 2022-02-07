@@ -88,6 +88,21 @@ except:
   adjZone2 = ''
 
 try:
+  adjZone3 = config.get('noaacap', 'adjZone3')
+except:
+  adjZone3 = ''
+
+try:
+  adjZone4 = config.get('noaacap', 'adjZone4')
+except:
+  adjZone4 = ''
+
+try:
+  adjZone5 = config.get('noaacap', 'adjZone5')
+except:
+  adjZone5 = ''
+
+try:
    myResend = int(config.get('noaacap', 'myResend'))
 except:
    log.error("Check " + conffile + " for proper myResend value in [noaacap] section")
@@ -321,6 +336,9 @@ for i in range(0, count):
 
       adjZone1True = 0
       adjZone2True = 0
+      adjZone3True = 0
+      adjZone4True = 0
+      adjZone5True = 0
 
       if adjZone1 != '' and adjZone1 in zcs_discrete:
          adjZone1True = 1
@@ -329,6 +347,18 @@ for i in range(0, count):
       if adjZone2 != '' and adjZone2 in zcs_discrete:
          adjZone2True = 1
          log.debug("adjZone2 found in alert data")
+
+      if adjZone3 != '' and adjZone3 in zcs_discrete:
+         adjZone3True = 1
+         log.debug("adjZone3 found in alert data")
+
+      if adjZone4 != '' and adjZone4 in zcs_discrete:
+         adjZone4True = 1
+         log.debug("adjZone4 found in alert data")
+
+      if adjZone5 != '' and adjZone5 in zcs_discrete:
+         adjZone5True = 1
+         log.debug("adjZone5 found in alert data")
 
       # Make sure message does not exceed 67 chars.  If it
       # does, trim it.  Also be certain that myZone is included
@@ -347,6 +377,15 @@ for i in range(0, count):
             message = exputc + "z," + type + "," + zcs
          if adjZone2True and not adjZone2 in parsezcs(zcs):
             zcs = adjZone2 + "-" + zcs
+            message = exputc + "z," + type + "," + zcs
+         if adjZone3True and not adjZone3 in parsezcs(zcs):
+            zcs = adjZone3 + "-" + zcs
+            message = exputc + "z," + type + "," + zcs
+         if adjZone4True and not adjZone4 in parsezcs(zcs):
+            zcs = adjZone2 + "-" + zcs
+            message = exputc + "z," + type + "," + zcs
+         if adjZone5True and not adjZone5 in parsezcs(zcs):
+            zcs = adjZone5 + "-" + zcs
             message = exputc + "z," + type + "," + zcs
 
       if n > 0:
